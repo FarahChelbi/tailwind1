@@ -1,0 +1,27 @@
+{
+    "name": "test",
+    "version": "0.1.0",
+    "engines": {
+        "node": "16 || 18"
+    },
+    "private": true,
+    "dependencies": {
+        "@tailwindcss/line-clamp": "^0.4.4",
+        "concurrently": "^8.2.0",
+        "restify": "^11.1.0",
+        "send": "^0.18.0"
+    },
+    "devDependencies": {
+        "env-cmd": "^10.1.0",
+        "nodemon": "^2.0.21",
+        "tailwindcss": "^3.3.3"
+    },
+    "scripts": {
+        "dev:teamsfx": "env-cmd --silent -f .localConfigs npm run start",
+        "start": "concurrently \"npm run start:nodemon\" \"npm run start:tailwind\"",
+        "start:nodemon": "nodemon --inspect=9239 --signal SIGINT src/app.js",
+        "start:tailwind": "npx tailwindcss -i ./src/input.css -o ./src/static/styles/custom.css --watch",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "homepage": "."
+}
